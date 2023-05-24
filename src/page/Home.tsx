@@ -13,9 +13,6 @@ interface MovieState {
 class Home extends Component<MovieState> {
   state = {
     movies: [],
-    title: "-",
-    content: "This is the home page",
-    page: 1,
     information: {},
     loading: false,
   };
