@@ -16,7 +16,7 @@ class Hero extends Component {
             <div className="max-w-xl">
               <h1 className="mb-5 text-5xl font-bold">Welcome to MitMovie</h1>
               <p className="mb-5">STREAMING FILMS</p>
-              <button className="btn btn-primary rounded-full">
+              <button className="btn btn-primary rounded-full px-10">
                 Get Started
               </button>
             </div>

@@ -1,18 +1,18 @@
 import { Component } from "react";
 import Navbar from "../components/Navbar";
-import Card from "../components/Card";
-import Hero from "../components/Hero";
 import Layout from "../components/Layout";
+import Card from "../components/Card";
+import Footer from "../components/footer";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-interface MovieState {
+interface ListMovieState {
   movies: Array<string | {}>;
 }
 
-class Home extends Component<MovieState> {
+class Listmovies extends Component<ListMovieState> {
   state = {
-    movies: [],
+    Listmovies: [],
     title: "-",
     content: "This is the home page",
     page: 1,
@@ -20,7 +20,7 @@ class Home extends Component<MovieState> {
     loading: false,
   };
 
-  async fetchMovies() {
+  async fetchListMovies() {
     this.setState({ loading: true });
     await axios
       .get(
@@ -32,7 +32,7 @@ class Home extends Component<MovieState> {
         console.log(response.data);
         const { results } = response.data;
         if (results) {
-          this.setState({ movies: results });
+          this.setState({ Listmovies: results });
         }
       })
       .catch((error) => {
@@ -46,24 +46,23 @@ class Home extends Component<MovieState> {
   }
 
   async componentDidMount() {
-    this.fetchMovies();
+    this.fetchListMovies();
   }
 
   render() {
-    const { movies } = this.state;
+    const { Listmovies } = this.state;
 
     return (
       <Layout>
         <div className="w-full">
           <Navbar />
         </div>
-        <Hero />
-        <h2 className="block text-center text-black text-4xl font-semibold mt-10">
-          Our Movies
+        <h2 className="block text-black text-4xl font-bold mt-10 ml-8">
+          List Movies
         </h2>
         <div className="mt-10">
           <div className="flex flex-wrap justify-center item-center gap-5">
-            {movies.map((item: any, index) => {
+            {Listmovies.map((item: any, index) => {
               return (
                 <Card
                   key={index}
@@ -76,9 +75,12 @@ class Home extends Component<MovieState> {
             })}
           </div>
         </div>
+        <div className="mt-36">
+          <Footer />
+        </div>
       </Layout>
     );
   }
 }
 
-export default Home;
+export default Listmovies;
