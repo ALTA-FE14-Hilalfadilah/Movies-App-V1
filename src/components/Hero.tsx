@@ -14,8 +14,10 @@ class Hero extends Component {
           <div className="hero-overlay bg-opacity-60"></div>
           <div className="hero-content text-center text-neutral-content">
             <div className="max-w-xl">
-              <h1 className="mb-5 text-5xl font-bold">Welcome to MitMovie</h1>
-              <p className="mb-5">STREAMING FILMS</p>
+              <h1 className="mb-5 text-4xl font-bold">
+                Welcome to ScenixMovie
+              </h1>
+              <p className="mb-5 text-lg">STREAMING FILMS</p>
               <button className="btn btn-primary rounded-full px-10">
                 Get Started
               </button>

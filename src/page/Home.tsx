@@ -3,6 +3,9 @@ import Navbar from "../components/Navbar";
 import Card from "../components/Card";
 import Hero from "../components/Hero";
 import Layout from "../components/Layout";
+import Footer from "../components/footer";
+
+import { withRouter } from "../Router/withRouter";
 import axios from "axios";
 import Swal from "sweetalert2";
 
@@ -73,9 +76,10 @@ class Home extends Component<MovieState> {
             })}
           </div>
         </div>
+        <Footer />
       </Layout>
     );
   }
 }
 
-export default Home;
+export default withRouter(Home);

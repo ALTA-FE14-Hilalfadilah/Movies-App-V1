@@ -1,69 +1,95 @@
 import { Component } from "react";
 import image from "../image/logo.png";
+import { Link } from "react-router-dom";
+
 class Navbar extends Component {
   render() {
     return (
-      <nav className="bg-zinc-900 shadow-lg">
-        <div className="w-screen flex items-center justify-around sticky top-0 mx-auto p-4">
-          <a href="#" className="flex items-center">
-            <img src={image} className="h-8 mr-3" alt="Logo" />
-            <span className="self-center text-2xl font-semibold whitespace-nowrap text-violet-500">
-              MitMoviesApp
-            </span>
-          </a>
-          <button
-            data-collapse-toggle="navbar-default"
-            type="button"
-            className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-            aria-controls="navbar-default"
-            aria-expanded="false"
-          >
-            <span className="sr-only">Open main menu</span>
-            <svg
-              className="w-6 h-6"
-              aria-hidden="true"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
+      <div className="navbar bg-zinc-800 fixed top-0 z-50">
+        <div className="navbar-start">
+          <div className="dropdown">
+            <label tabIndex={0} className="btn btn-circle">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h16M4 18h7"
+                />
+              </svg>
+            </label>
+            <ul
+              tabIndex={0}
+              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
-              <path
-                fill-rule="evenodd"
-                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                clip-rule="evenodd"
-              ></path>
-            </svg>
-          </button>
-          <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-            <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-zinc-900 md:flex-row md:space-x-8 md:mt-0 md:border-0">
               <li>
-                <a
-                  href="#"
-                  className="block py-2 pl-3 pr-4 text-white bg-violet-500 rounded md:bg-transparent md:p-0 "
-                  aria-current="page"
-                >
-                  Home
-                </a>
+                <Link to={"/"}>
+                  <li>Home</li>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-violet-500 md:p-0"
-                >
-                  ListMovies
-                </a>
+                <Link to={"/Listmovies"}>
+                  <li>Listmovies</li>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-violet-500 md:p-0"
-                >
-                  Favorites
-                </a>
+                <a>Favorite</a>
               </li>
             </ul>
           </div>
         </div>
-      </nav>
+        <div className="navbar-center">
+          <Link to={"/"}>
+            <a className="btn btn-ghost normal-case text-2xl text-white">
+              <img src={image} alt="logo" />
+              ScenixMovieApp
+            </a>
+          </Link>
+        </div>
+        <div className="navbar-end gap-x-5">
+          <button className="btn btn-circle">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+          </button>
+          <button className="btn btn-circle ">
+            <div className="indicator">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+                />
+              </svg>
+              <span className="badge badge-xs badge-primary indicator-item"></span>
+            </div>
+          </button>
+        </div>
+      </div>
     );
   }
 }

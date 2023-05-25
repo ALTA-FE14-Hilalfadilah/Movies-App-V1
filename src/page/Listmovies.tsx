@@ -3,6 +3,8 @@ import Navbar from "../components/Navbar";
 import Layout from "../components/Layout";
 import Card from "../components/Card";
 import Footer from "../components/footer";
+import { withRouter } from "../Router/withRouter";
+
 import axios from "axios";
 import Swal from "sweetalert2";
 
@@ -54,7 +56,7 @@ class Listmovies extends Component<ListMovieState> {
         <div className="w-full">
           <Navbar />
         </div>
-        <h2 className="block text-black text-4xl font-bold mt-10 ml-8">
+        <h2 className="block text-black text-4xl font-bold mt-28 ml-8">
           List Movies
         </h2>
         <div className="mt-10">
@@ -80,4 +82,4 @@ class Listmovies extends Component<ListMovieState> {
   }
 }
 
-export default Listmovies;
+export default withRouter(Listmovies);

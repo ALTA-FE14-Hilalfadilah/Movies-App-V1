@@ -1,4 +1,5 @@
 import { Component } from "react";
+import Button from "./Button";
 
 interface CardProps {
   id: string;
@@ -25,8 +26,8 @@ class Card extends Component<CardProps> {
             <h2 className="card-title">{title}</h2>
             <p>{description} / 10</p>
             <div className="card-actions justify-center mt-4 pb-4">
-              <button className="btn btn-primary">Watch Now</button>
-              <button className="btn btn-primary">Add to favorite</button>
+              <Button id="Watch Now" Label="Watch Now" />
+              <Button id="Add to Favorite" Label="Add to Favorite" />
             </div>
           </div>
         </div>
