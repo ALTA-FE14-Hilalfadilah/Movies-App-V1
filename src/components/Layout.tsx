@@ -1,19 +1,15 @@
-import React, { Component } from "react";
+import { FC } from "react";
 
 interface LayoutProps {
   children?: React.ReactNode;
 }
 
-class Layout extends Component<LayoutProps> {
-  render() {
-    const { children } = this.props;
-
-    return (
-      <div className="flex flex-col min-h-screen">
-        <div className="flex-1">{children}</div>
-      </div>
-    );
-  }
-}
+const Layout: FC<LayoutProps> = ({ children }) => {
+  return (
+    <div className="flex flex-col min-h-screen">
+      <div className="flex-1">{children}</div>
+    </div>
+  );
+};
 
 export default Layout;

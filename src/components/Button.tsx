@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { FC } from "react";
 
 interface ButtonProps {
   id: string;
@@ -6,16 +6,12 @@ interface ButtonProps {
   onClick?: React.MouseEventHandler;
 }
 
-class Button extends Component<ButtonProps> {
-  render() {
-    const { id, Label, onClick } = this.props;
-
-    return (
-      <button id={id} className="btn btn-primary" onClick={onClick}>
-        {Label}
-      </button>
-    );
-  }
-}
+const Button: FC<ButtonProps> = ({ id, Label, onClick }) => {
+  return (
+    <button id={id} className="btn btn-primary" onClick={onClick}>
+      {Label}
+    </button>
+  );
+};
 
 export default Button;
