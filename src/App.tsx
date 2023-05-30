@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { DarkModeProvider } from "./utils/Darkmode";
 
 import Home from "./page/Home";
 import Listmovies from "./page/Listmovies";
@@ -6,10 +7,12 @@ import Listmovies from "./page/Listmovies";
 const App = () => {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/Listmovies" element={<Listmovies />} />
-      </Routes>
+      <DarkModeProvider>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/Listmovies" element={<Listmovies />} />
+        </Routes>
+      </DarkModeProvider>
     </BrowserRouter>
   );
 };

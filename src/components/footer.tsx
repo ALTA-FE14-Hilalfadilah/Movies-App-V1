@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="footer footer-center p-10 bg-zinc-800 text-base-content rounded">
+    <footer className="footer footer-center mt-20 p-10 bg-zinc-800 text-base-content rounded">
       <div className="grid grid-flow-col gap-4">
         <a className="link link-hover text-white transition-all duration-300 ease-in-out">
           About us

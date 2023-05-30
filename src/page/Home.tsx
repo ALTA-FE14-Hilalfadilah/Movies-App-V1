@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { DarkModeContext } from "../utils/Darkmode";
 import Navbar from "../components/Navbar";
 import Card from "../components/Card";
 import Hero from "../components/Hero";
@@ -11,6 +12,7 @@ import Swal from "sweetalert2";
 
 const Home: React.FC = () => {
   const [movies, setMovies] = useState<Array<String | number>>([]);
+  const { darkMode } = useContext(DarkModeContext);
 
   const fetchMovies = async () => {
     try {
@@ -38,27 +40,29 @@ const Home: React.FC = () => {
 
   return (
     <Layout>
-      <div className="w-full">
+      <div
+        className={darkMode ? "bg-zinc-800 text-white" : "bg-white text-black"}
+      >
         <Navbar />
-      </div>
-      <Hero />
-      <h2 className="block text-center text-black text-4xl font-semibold mt-10">
-        Our Movies
-      </h2>
-      <div className="mt-10">
-        <div className="flex flex-wrap justify-center item-center gap-5">
-          {movies.map((item: any) => (
-            <Card
-              key={item.id}
-              id="movies"
-              title={item.title}
-              description={item.vote_average}
-              image={item.poster_path}
-            />
-          ))}
+        <Hero />
+        <h2 className="block text-center text-4xl font-semibold mt-10">
+          Our Movies
+        </h2>
+        <div className="mt-10">
+          <div className="flex flex-wrap justify-center item-center gap-5">
+            {movies.map((item: any) => (
+              <Card
+                key={item.id}
+                id="movies"
+                title={item.title}
+                description={item.vote_average}
+                image={item.poster_path}
+              />
+            ))}
+          </div>
         </div>
+        <Footer />
       </div>
-      <Footer />
     </Layout>
   );
 };
