@@ -7,14 +7,23 @@ interface CardProps {
   title?: string;
   description?: string;
   image?: string;
+  handleFavorite?: React.MouseEventHandler;
 }
 
-const Card: FC<CardProps> = ({ id, title, description, image }) => {
+const Card: FC<CardProps> = ({
+  id,
+  title,
+  description,
+  image,
+  handleFavorite,
+}) => {
   const { darkMode } = useContext(DarkModeContext);
   return (
     <div
       className={
-        darkMode ? "bg-zinc-600 card shadow-md" : "bg-gray-200 card shadow-md"
+        darkMode
+          ? "bg-zinc-600 text-white card shadow-md"
+          : "bg-gray-200 card shadow-md"
       }
     >
       <div className="card w-[310px]" id={id}>
@@ -33,7 +42,11 @@ const Card: FC<CardProps> = ({ id, title, description, image }) => {
           </p>
           <div className="card-actions justify-center mt-4 pb-4">
             <Button id="Watch Now" Label="Watch Now" />
-            <Button id="Add to Favorite" Label="Add to Favorite" />
+            <Button
+              id="Add to Favorite"
+              Label="Add to Favorite"
+              onClick={handleFavorite}
+            />
           </div>
         </div>
       </div>

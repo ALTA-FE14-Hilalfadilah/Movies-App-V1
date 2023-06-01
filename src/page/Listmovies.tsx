@@ -1,15 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Navbar from "../components/Navbar";
 import Layout from "../components/Layout";
 import Card from "../components/Card";
 import Footer from "../components/footer";
 import { withRouter } from "../Router/withRouter";
+import { DarkModeContext } from "../utils/Darkmode";
 
 import axios from "axios";
 import Swal from "sweetalert2";
 
 const Listmovies: React.FC = () => {
   const [Listmovies, setMovies] = useState<Array<String | number>>([]);
+  const { darkMode } = useContext(DarkModeContext);
 
   const fetchMovies = async () => {
     try {
@@ -36,32 +38,32 @@ const Listmovies: React.FC = () => {
   }, []);
 
   return (
-    <Layout>
-      <div className="w-full">
+    <div
+      className={darkMode ? "bg-zinc-800 text-white" : "bg-white text-black"}
+    >
+      <Layout>
         <Navbar />
-      </div>
-      <h2 className="block text-black text-4xl font-bold mt-28 ml-8">
-        List Movies
-      </h2>
-      <div className="mt-10">
-        <div className="flex flex-wrap justify-center item-center gap-5">
-          {Listmovies.map((item: any, index) => {
-            return (
-              <Card
-                key={index}
-                id={"movies"}
-                title={item.title}
-                description={item.vote_average}
-                image={item.poster_path}
-              />
-            );
-          })}
+        <h2 className="block text-4xl font-bold mt-20 ml-8">List Movies</h2>
+        <div className="mt-10">
+          <div className="flex flex-wrap justify-center item-center gap-5">
+            {Listmovies.map((item: any, index) => {
+              return (
+                <Card
+                  key={index}
+                  id={"movies"}
+                  title={item.title}
+                  description={item.vote_average}
+                  image={item.poster_path}
+                />
+              );
+            })}
+          </div>
         </div>
-      </div>
-      <div className="mt-36">
-        <Footer />
-      </div>
-    </Layout>
+        <div className="mt-36">
+          <Footer />
+        </div>
+      </Layout>
+    </div>
   );
 };
 

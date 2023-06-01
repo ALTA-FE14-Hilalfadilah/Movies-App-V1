@@ -1,13 +1,16 @@
 import React, { useContext } from "react";
 import image from "../image/logo.png";
 import Toggle from "./toggle";
+import { useNavigate } from "react-router-dom";
 import { DarkModeContext } from "../utils/Darkmode";
 import { Link } from "react-router-dom";
 
 const Navbar: React.FC = () => {
   const { toggleDarkMode } = useContext(DarkModeContext);
+  const navigate = useNavigate();
+
   return (
-    <div className="navbar bg-zinc-900 fixed top-0 z-50">
+    <div className="navbar bg-zinc-900 fixed z-50">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-circle">
@@ -28,7 +31,7 @@ const Navbar: React.FC = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-black"
           >
             <li>
               <Link to={"/"}>Home </Link>
@@ -36,8 +39,8 @@ const Navbar: React.FC = () => {
             <li>
               <Link to={"/Listmovies"}>Listmovies</Link>
             </li>
-            <li>
-              <Link to={"/"}>Favorite</Link>
+            <li onClick={() => navigate("/Favorite")}>
+              <Link to={""}>Favorite</Link>
             </li>
           </ul>
         </div>
